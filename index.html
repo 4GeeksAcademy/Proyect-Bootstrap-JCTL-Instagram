@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed de Instagram</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fafafa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            padding-top: 5rem;
+        }
+
+        .instagram-header {
+            background-color: #fff;
+            border-bottom: 1px solid #dbdbdb;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .card-post {
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            max-width: 500px;
+            margin: 2rem auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .card-post-header h5 {
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .card-post-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-post-likes {
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+        }
+
+        .card-post-caption {
+            padding: 0 1rem 1rem;
+            color: #262626;
+        }
+
+        .view-icons .btn-check+.btn {
+            color: #ccc;
+            /* Color gris por defecto para inactivos */
+            background-color: transparent;
+            border: none;
+            /* Eliminar bordes de los botones */
+            box-shadow: none;
+            /* Eliminar sombras de foco */
+            padding: 0.5rem 0.5rem;
+            /* Ajustar padding si es necesario */
+        }
+
+        .view-icons .btn-check:checked+.btn {
+            color: #0095f6;
+            /* Azul Instagram para el activo */
+        }
+
+        .view-icons .btn-check+.btn:hover {
+            color: #999;
+            /* Un gris un poco más oscuro al pasar el ratón */
+            background-color: transparent;
+            border: none;
+        }
+
+        /* Ajustes para el tamaño de los íconos */
+        .view-icons .bi {
+            font-size: 1.5rem;
+            /* Aumentar el tamaño de los íconos si lo deseas */
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light instagram-header">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="bi bi-instagram fs-4 me-2"></i>
+                <span class="fs-5 fw-bold">Instagram</span>
+            </a>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#createPostModal">Crear
+                    nueva publicación</button>
+
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-gear-fill"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Accessibility</a></li>
+                        <li><a class="dropdown-item" href="#">Privacy and Data</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="#">Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="d-flex justify-content-center pt-3 pb-3 view-icons">
+            <div class="btn-group" role="group" aria-label="Botones de vista de publicaciones">
+                <input type="radio" class="btn-check" name="view-options" id="viewGrid" autocomplete="off" checked>
+                <label class="btn" for="viewGrid" onclick="showGallery()"><i class="bi bi-grid-3x3"></i></label>
+                
+                <input type="radio" class="btn-check" name="view-options" id="viewSquare" autocomplete="off">
+                <label class="btn" for="viewSquare" onclick="showPosts()"><i class="bi bi-square-fill"></i></label>
+            </div>
+        </div>
+
+        <div class="card-post">
+            <div class="card-post-header">
+                <h5>Vacaciones en Sevilla</h5>
+                <span class="text-muted">08/26</span>
+            </div>
+            <div class="card-post-image">
+                <img src="https://image.urlaubspiraten.de/640/image/upload/v1617096024/Impressions%20and%20Other%20Assets/shutterstock_1840522828_tcbevm.jpg"
+                    alt="Sevilla">
+            </div>
+            <div class="card-body">
+                <div class="card-post-likes">
+                    306 Likes
+                </div>
+                <div class="card-post-caption">
+                    <p class="mb-0">La arquitectura de Sevilla te lleva a la maravillosa antigüedad.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <main class="container">
+        <div class="card-post">
+            <div class="card-post-header">
+                <h5>Barcelona de Pelicula</h5>
+                <span class="text-muted">08/07</span>
+            </div>
+            <div class="card-post-image">
+                <img src="https://www.lugaris.com/wp-content/uploads/2018/11/correos.jpg" alt="Barcelona">
+            </div>
+            <div class="card-body">
+                <div class="card-post-likes">
+                    685 Likes
+                </div>
+                <div class="card-post-caption">
+                    <p class="mb-0">Logre visitar uno de los lugares de Barcelona que aparecen en muchas de mis
+                        peliculas favoritas. Estuve en ellas!!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <main class="container">
+        <div class="card-post">
+            <div class="card-post-header">
+                <h5>Madrid de Locos</h5>
+                <span class="text-muted">13/09</span>
+            </div>
+            <div class="card-post-image">
+                <img src="https://www.hoymadrid.app/wp-content/uploads/2023/12/madrid.jpg" alt="Madrid">
+            </div>
+            <div class="card-body">
+                <div class="card-post-likes">
+                    1423 Likes
+                </div>
+                <div class="card-post-caption">
+                    <p class="mb-0">Madrid me dejo perplejo con su actividad nocturna, definitivamente necesito mas de
+                        una semana para conocerla.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <main class="container">
+        <div class="card-post">
+            <div class="card-post-header">
+                <h5>Pirineos con Marco Antonio</h5>
+                <span class="text-muted">11/05</span>
+            </div>
+            <div class="card-post-image">
+                <img src="https://cdn1.yumping.com/emp/fotos/28/P/024306/640/clases-de-dia-completo.jpg" alt="Pirineos">
+            </div>
+            <div class="card-body">
+                <div class="card-post-likes">
+                    2374 Likes
+                </div>
+                <div class="card-post-caption">
+                    <p class="mb-0">Amé recorrer los Pirineos con Marco Antonio, compartir lo que mas ama conmigo fue
+                        genial!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <main class="container">
+        <div class="card-post">
+            <div class="card-post-header">
+                <h5>Amsterdam</h5>
+                <span class="text-muted">21/01</span>
+            </div>
+            <div class="card-post-image">
+                <img src="https://media.istockphoto.com/id/497143276/es/foto/%C3%A1msterdam-pa%C3%ADses-bajos.jpg?s=612x612&w=0&k=20&c=8rizdChoeTWXMoCxYfPwoD7WskZeBw5U4AutY1eKjQI="
+                    alt="Amsterdam">
+            </div>
+            <div class="card-body">
+                <div class="card-post-likes">
+                    7000 Likes
+                </div>
+                <div class="card-post-caption">
+                    <p class="mb-0">Paises Bajos con Juanpa, jajaja, siempre quisimos ir a Amsterdam juntos, we made
+                        it!!!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <main class="container">
+        <div class="card-post">
+            <div class="card-post-header">
+                <h5>Sicilia y Mi Otra Mitad!</h5>
+                <span class="text-muted">27/01</span>
+            </div>
+            <div class="card-post-image">
+                <img src="https://saboraitaliamx.com/wp-content/uploads/2021/08/SICILIA.jpg" alt="Sicilia">
+            </div>
+            <div class="card-body">
+                <div class="card-post-likes">
+                    11100 Likes
+                </div>
+                <div class="card-post-caption">
+                    <p class="mb-0">El amor de mi vida es marivillosa como la vista de la Preciosa Ciudad de Sicilia.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <main class="container">
+        <div class="card-post">
+            <div class="card-post-header">
+                <h5>Paris no Duerme</h5>
+                <span class="text-muted">06/06</span>
+            </div>
+            <div class="card-post-image">
+                <img src="https://www.shutterstock.com/shutterstock/videos/34747474/thumb/8.jpg?ip=x480" alt="Paris">
+            </div>
+            <div class="card-body">
+                <div class="card-post-likes">
+                    77777 Likes
+                </div>
+                <div class="card-post-caption">
+                    <p class="mb-0">Nos casamos en Madrid y Paris nos transformó.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createPostModalLabel">Create a new post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="captionTextarea" class="form-label">Caption:</label>
+                        <textarea class="form-control" id="captionTextarea" rows="3"
+                            placeholder="Add the caption of your post here"></textarea>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-light me-2">
+                            <i class="bi bi-camera"></i>
+                        </button>
+                        <button class="btn btn-light">
+                            <i class="bi bi-geo-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Publish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
