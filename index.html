@@ -62,32 +62,39 @@
 
         .view-icons .btn-check+.btn {
             color: #ccc;
-            /* Color gris por defecto para inactivos */
             background-color: transparent;
             border: none;
-            /* Eliminar bordes de los botones */
             box-shadow: none;
-            /* Eliminar sombras de foco */
             padding: 0.5rem 0.5rem;
-            /* Ajustar padding si es necesario */
         }
 
         .view-icons .btn-check:checked+.btn {
             color: #0095f6;
-            /* Azul Instagram para el activo */
         }
 
         .view-icons .btn-check+.btn:hover {
             color: #999;
-            /* Un gris un poco más oscuro al pasar el ratón */
             background-color: transparent;
             border: none;
         }
 
-        /* Ajustes para el tamaño de los íconos */
         .view-icons .bi {
             font-size: 1.5rem;
-            /* Aumentar el tamaño de los íconos si lo deseas */
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            max-width: 935px;
+            margin: 2rem auto;
+        }
+
+        .posts-grid .grid-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
         }
     </style>
 </head>
@@ -124,151 +131,210 @@
     </nav>
 
     <main class="container">
+
         <div class="d-flex justify-content-center pt-3 pb-3 view-icons">
             <div class="btn-group" role="group" aria-label="Botones de vista de publicaciones">
                 <input type="radio" class="btn-check" name="view-options" id="viewGrid" autocomplete="off" checked>
-                <label class="btn" for="viewGrid" onclick="showGallery()"><i class="bi bi-grid-3x3"></i></label>
-                
+                <label class="btn" for="viewGrid"><i class="bi bi-grid-3x3"></i></label>
+
                 <input type="radio" class="btn-check" name="view-options" id="viewSquare" autocomplete="off">
-                <label class="btn" for="viewSquare" onclick="showPosts()"><i class="bi bi-square-fill"></i></label>
+                <label class="btn" for="viewSquare"><i class="bi bi-square-fill"></i></label>
             </div>
         </div>
 
-        <div class="card-post">
-            <div class="card-post-header">
-                <h5>Vacaciones en Sevilla</h5>
-                <span class="text-muted">08/26</span>
+        <div id="galleryView" class="posts-grid">
+            <div class="grid-item"><img
+                    src="https://aem-all.accor.com/content/dam/all/hubs/americas/latam/generic-images/all-magazine/mejores-playas-lima-2024-2.jpg"
+                    alt="Lima"></div>
+            <div class="grid-item"><img src="https://tenerifeguru.com/wp-content/uploads/2019/12/WhyTenerife1.jpg"
+                    alt="Tenerife"></div>
+            <div class="grid-item"><img
+                    src="https://image.urlaubspiraten.de/640/image/upload/v1617096024/Impressions%20and%20Other%20Assets/shutterstock_1840522828_tcbevm.jpg"
+                    alt="Sevilla"></div>
+            <div class="grid-item"><img src="https://www.lugaris.com/wp-content/uploads/2018/11/correos.jpg"
+                    alt="Barcelona"></div>
+            <div class="grid-item"><img src="https://www.hoymadrid.app/wp-content/uploads/2023/12/madrid.jpg"
+                    alt="Madrid"></div>
+            <div class="grid-item"><img
+                    src="https://cdn1.yumping.com/emp/fotos/28/P/024306/640/clases-de-dia-completo.jpg" alt="Pirineos">
             </div>
-            <div class="card-post-image">
-                <img src="https://image.urlaubspiraten.de/640/image/upload/v1617096024/Impressions%20and%20Other%20Assets/shutterstock_1840522828_tcbevm.jpg"
-                    alt="Sevilla">
-            </div>
-            <div class="card-body">
-                <div class="card-post-likes">
-                    306 Likes
-                </div>
-                <div class="card-post-caption">
-                    <p class="mb-0">La arquitectura de Sevilla te lleva a la maravillosa antigüedad.</p>
-                </div>
-            </div>
-        </div>
-    </main>
-    <main class="container">
-        <div class="card-post">
-            <div class="card-post-header">
-                <h5>Barcelona de Pelicula</h5>
-                <span class="text-muted">08/07</span>
-            </div>
-            <div class="card-post-image">
-                <img src="https://www.lugaris.com/wp-content/uploads/2018/11/correos.jpg" alt="Barcelona">
-            </div>
-            <div class="card-body">
-                <div class="card-post-likes">
-                    685 Likes
-                </div>
-                <div class="card-post-caption">
-                    <p class="mb-0">Logre visitar uno de los lugares de Barcelona que aparecen en muchas de mis
-                        peliculas favoritas. Estuve en ellas!!</p>
-                </div>
+            <div class="grid-item"><img
+                    src="https://media.istockphoto.com/id/497143276/es/foto/%C3%A1msterdam-pa%C3%ADses-bajos.jpg?s=612x612&w=0&k=20&c=8rizdChoeTWXMoCxYfPwoD7WskZeBw5U4AutY1eKjQI="
+                    alt="Amsterdam"></div>
+            <div class="grid-item"><img src="https://saboraitaliamx.com/wp-content/uploads/2021/08/SICILIA.jpg"
+                    alt="Sicilia"></div>
+            <div class="grid-item"><img
+                    src="https://www.shutterstock.com/shutterstock/videos/34747474/thumb/8.jpg?ip=x480" alt="Paris">
             </div>
         </div>
-    </main>
-    <main class="container">
-        <div class="card-post">
-            <div class="card-post-header">
-                <h5>Madrid de Locos</h5>
-                <span class="text-muted">13/09</span>
-            </div>
-            <div class="card-post-image">
-                <img src="https://www.hoymadrid.app/wp-content/uploads/2023/12/madrid.jpg" alt="Madrid">
-            </div>
-            <div class="card-body">
-                <div class="card-post-likes">
-                    1423 Likes
+
+        <div id="postView" class="d-none">
+            <div class="card-post">
+                <div class="card-post-header">
+                    <h5>Lima Gris</h5>
+                    <span class="text-muted">04/01</span>
                 </div>
-                <div class="card-post-caption">
-                    <p class="mb-0">Madrid me dejo perplejo con su actividad nocturna, definitivamente necesito mas de
-                        una semana para conocerla.</p>
+                <div class="card-post-image">
+                    <img src="https://aem-all.accor.com/content/dam/all/hubs/americas/latam/generic-images/all-magazine/mejores-playas-lima-2024-2.jpg"
+                        alt="Lima">
                 </div>
-            </div>
-        </div>
-    </main>
-    <main class="container">
-        <div class="card-post">
-            <div class="card-post-header">
-                <h5>Pirineos con Marco Antonio</h5>
-                <span class="text-muted">11/05</span>
-            </div>
-            <div class="card-post-image">
-                <img src="https://cdn1.yumping.com/emp/fotos/28/P/024306/640/clases-de-dia-completo.jpg" alt="Pirineos">
-            </div>
-            <div class="card-body">
-                <div class="card-post-likes">
-                    2374 Likes
-                </div>
-                <div class="card-post-caption">
-                    <p class="mb-0">Amé recorrer los Pirineos con Marco Antonio, compartir lo que mas ama conmigo fue
-                        genial!</p>
+                <div class="card-body">
+                    <div class="card-post-likes">
+                        600 Likes
+                    </div>
+                    <div class="card-post-caption">
+                        <p class="mb-0">Lima ciudad feroz y rapida, donde crecer es importante y necesario. Alli
+                            crecimos.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
-    <main class="container">
-        <div class="card-post">
-            <div class="card-post-header">
-                <h5>Amsterdam</h5>
-                <span class="text-muted">21/01</span>
-            </div>
-            <div class="card-post-image">
-                <img src="https://media.istockphoto.com/id/497143276/es/foto/%C3%A1msterdam-pa%C3%ADses-bajos.jpg?s=612x612&w=0&k=20&c=8rizdChoeTWXMoCxYfPwoD7WskZeBw5U4AutY1eKjQI="
-                    alt="Amsterdam">
-            </div>
-            <div class="card-body">
-                <div class="card-post-likes">
-                    7000 Likes
+            <div class="card-post">
+                <div class="card-post-header">
+                    <h5>Visita a Tenerife</h5>
+                    <span class="text-muted">29/02</span>
                 </div>
-                <div class="card-post-caption">
-                    <p class="mb-0">Paises Bajos con Juanpa, jajaja, siempre quisimos ir a Amsterdam juntos, we made
-                        it!!!</p>
+                <div class="card-post-image">
+                    <img src="https://tenerifeguru.com/wp-content/uploads/2019/12/WhyTenerife1.jpg" alt="Tenerife">
+                </div>
+                <div class="card-body">
+                    <div class="card-post-likes">
+                        200 Likes
+                    </div>
+                    <div class="card-post-caption">
+                        <p class="mb-0">Tenerife, lugar de encantos y desencantos. Ambos sirven para ser apreciados.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
-    <main class="container">
-        <div class="card-post">
-            <div class="card-post-header">
-                <h5>Sicilia y Mi Otra Mitad!</h5>
-                <span class="text-muted">27/01</span>
-            </div>
-            <div class="card-post-image">
-                <img src="https://saboraitaliamx.com/wp-content/uploads/2021/08/SICILIA.jpg" alt="Sicilia">
-            </div>
-            <div class="card-body">
-                <div class="card-post-likes">
-                    11100 Likes
+            <div class="card-post">
+                <div class="card-post-header">
+                    <h5>Vacaciones en Sevilla</h5>
+                    <span class="text-muted">08/26</span>
                 </div>
-                <div class="card-post-caption">
-                    <p class="mb-0">El amor de mi vida es marivillosa como la vista de la Preciosa Ciudad de Sicilia.
-                    </p>
+                <div class="card-post-image">
+                    <img src="https://image.urlaubspiraten.de/640/image/upload/v1617096024/Impressions%20and%20Other%20Assets/shutterstock_1840522828_tcbevm.jpg"
+                        alt="Sevilla">
+                </div>
+                <div class="card-body">
+                    <div class="card-post-likes">
+                        306 Likes
+                    </div>
+                    <div class="card-post-caption">
+                        <p class="mb-0">La arquitectura de Sevilla te lleva a la maravillosa antigüedad.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
-    <main class="container">
-        <div class="card-post">
-            <div class="card-post-header">
-                <h5>Paris no Duerme</h5>
-                <span class="text-muted">06/06</span>
-            </div>
-            <div class="card-post-image">
-                <img src="https://www.shutterstock.com/shutterstock/videos/34747474/thumb/8.jpg?ip=x480" alt="Paris">
-            </div>
-            <div class="card-body">
-                <div class="card-post-likes">
-                    77777 Likes
+            <div class="card-post">
+                <div class="card-post-header">
+                    <h5>Barcelona de Pelicula</h5>
+                    <span class="text-muted">08/07</span>
                 </div>
-                <div class="card-post-caption">
-                    <p class="mb-0">Nos casamos en Madrid y Paris nos transformó.</p>
+                <div class="card-post-image">
+                    <img src="https://www.lugaris.com/wp-content/uploads/2018/11/correos.jpg" alt="Barcelona">
+                </div>
+                <div class="card-body">
+                    <div class="card-post-likes">
+                        685 Likes
+                    </div>
+                    <div class="card-post-caption">
+                        <p class="mb-0">Logre visitar uno de los lugares de Barcelona que aparecen en muchas de mis
+                            peliculas favoritas. Estuve en ellas!!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-post">
+                <div class="card-post-header">
+                    <h5>Madrid de Locos</h5>
+                    <span class="text-muted">13/09</span>
+                </div>
+                <div class="card-post-image">
+                    <img src="https://www.hoymadrid.app/wp-content/uploads/2023/12/madrid.jpg" alt="Madrid">
+                </div>
+                <div class="card-body">
+                    <div class="card-post-likes">
+                        1423 Likes
+                    </div>
+                    <div class="card-post-caption">
+                        <p class="mb-0">Madrid me dejo perplejo con su actividad nocturna, definitivamente necesito mas
+                            de
+                            una semana para conocerla.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-post">
+                <div class="card-post-header">
+                    <h5>Pirineos con Marco Antonio</h5>
+                    <span class="text-muted">11/05</span>
+                </div>
+                <div class="card-post-image">
+                    <img src="https://cdn1.yumping.com/emp/fotos/28/P/024306/640/clases-de-dia-completo.jpg"
+                        alt="Pirineos">
+                </div>
+                <div class="card-body">
+                    <div class="card-post-likes">
+                        2374 Likes
+                    </div>
+                    <div class="card-post-caption">
+                        <p class="mb-0">Amé recorrer los Pirineos con Marco Antonio, compartir lo que mas ama conmigo
+                            fue
+                            genial!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-post">
+                <div class="card-post-header">
+                    <h5>Amsterdam</h5>
+                    <span class="text-muted">21/01</span>
+                </div>
+                <div class="card-post-image">
+                    <img src="https://media.istockphoto.com/id/497143276/es/foto/%C3%A1msterdam-pa%C3%ADses-bajos.jpg?s=612x612&w=0&k=20&c=8rizdChoeTWXMoCxYfPwoD7WskZeBw5U4AutY1eKjQI="
+                        alt="Amsterdam">
+                </div>
+                <div class="card-body">
+                    <div class="card-post-likes">
+                        7000 Likes
+                    </div>
+                    <div class="card-post-caption">
+                        <p class="mb-0">Paises Bajos con Juanpa, jajaja, siempre quisimos ir a Amsterdam juntos, we
+                            made
+                            it!!!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-post">
+                <div class="card-post-header">
+                    <h5>Sicilia y Mi Otra Mitad!</h5>
+                    <span class="text-muted">27/01</span>
+                </div>
+                <div class="card-post-image">
+                    <img src="https://saboraitaliamx.com/wp-content/uploads/2021/08/SICILIA.jpg" alt="Sicilia">
+                </div>
+                <div class="card-body">
+                    <div class="card-post-likes">
+                        11100 Likes
+                    </div>
+                    <div class="card-post-caption">
+                        <p class="mb-0">El amor de mi vida es maravillosa como la vista de la Preciosa Ciudad de
+                            Sicilia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-post">
+                <div class="card-post-header">
+                    <h5>Paris no Duerme</h5>
+                    <span class="text-muted">06/06</span>
+                </div>
+                <div class="card-post-image">
+                    <img src="https://www.shutterstock.com/shutterstock/videos/34747474/thumb/8.jpg?ip=x480"
+                        alt="Paris">
+                </div>
+                <div class="card-body">
+                    <div class="card-post-likes">
+                        77777 Likes
+                    </div>
+                    <div class="card-post-caption">
+                        <p class="mb-0">Nos casamos en Madrid y Paris nos transformó.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -305,9 +371,34 @@
         </div>
     </div>
 
+    <script>
+        function showGallery() {
+            document.getElementById("postView").classList.add("d-none");
+            document.getElementById("galleryView").classList.remove("d-none");
+        }
 
+        function showPosts() {
+            document.getElementById("galleryView").classList.add("d-none");
+            document.getElementById("postView").classList.remove("d-none");
+        }
 
+  
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const viewGridInput = document.getElementById('viewGrid');
+            const viewSquareInput = document.getElementById('viewSquare');
 
+            
+            viewGridInput.addEventListener('change', showGallery);
+            viewSquareInput.addEventListener('change', showPosts);
+
+         
+            if (viewGridInput.checked) {
+                showGallery();
+            } else {
+                showPosts();
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
